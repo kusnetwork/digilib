@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>	
+    <title>Redactor is awesome!</title>
+	
+    <meta charset="utf-8">
+	
+    <link rel="stylesheet" href="http://redactorjs.com/js/redactor/redactor.css" />
+	
+  	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script src="http://redactorjs.com/js/redactor/redactor.min.js"></script>    
+    
+    <!-- Redactor's plugin -->
+    <script src="mymodal.js"></script>
+    <link rel="stylesheet" href="mymodal.css" />
+
+	 <!-- Call Redactor -->
+    <script type="text/javascript">
+    $(document).ready(
+        function()
+        {
+            $('#redactor').redactor({ 
+            	focus: true,
+                plugins: ['mymodal:startMyModal']
+            });	
+        }
+    );
+    </script>	
+	
+	 <!-- Site styles -->
+	<style type="text/css">
+	html, body {
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		font-family: Helvetica, Arial, sans-serif;	
+		font-size: 14px;
+	}
+	#page {
+		width: 940px;
+		margin: 50px auto;
+	}	
+	</style>
+	
+</head>
+<body>
+    <div id="page">
+        <textarea id="redactor" name="content" style="width: 99%; height: 400px;">
+        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </textarea>
+        
+		<!-- My Modal HTML -->        
+		<div id="mymodal" style="display: none;">
+			
+			<p><a href="#" id="mymodal-link">Insert</a></p>
+			
+			<div id="redactor_modal_footer">
+				<span class="redactor_btns_box">
+					<a href="javascript:void(null);" class="redactor_btn_modal_close">Close</a>
+				</span>
+			</div>
+		</div>        
+        
+    </div>
+</body>	
+</html>

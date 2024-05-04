@@ -1,0 +1,6 @@
+DIGILIB
+
+1. User only borrow 2 books at one transaction
+2. jika buku telah dipinjam, tidak bisa dipinjam lagi, tombol mati
+3. batas pengembalian 1 minggu
+4. denda 500 / hari
