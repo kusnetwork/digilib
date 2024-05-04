@@ -157,16 +157,16 @@
 				  <?php
 					$db=new MySQL();
 					$db->connect();
-					if($data[$i][4] == "0000-00-00 00:00:00")
+					if($data[$i][4] == "0000-00-00 00:00:00") 
+					// Artinya belum kembali
+						//datediff itu selisih hari dari tanggal pinjam sampai kembali 
 						$db->execute("SELECT datediff(now(), tglPinjam) 
 							FROM `tb_pinjam` 
-							WHERE datediff(now(), tglPinjam) < 30
-							AND kodePinjam = ".$data[$i][0]." "); 
+							WHERE kodePinjam = ".$data[$i][0]." "); 
 					else
 						$db->execute("SELECT datediff(tglKembali, tglPinjam) 
 							FROM `tb_pinjam` 
-							WHERE datediff(tglKembali, tglPinjam) < 30
-							AND kodePinjam = ".$data[$i][0]." ");
+							WHERE kodePinjam = ".$data[$i][0]." ");
 					$dnd=$db->get_dataset();
 					if($dnd[0][0] >= 7) {
 						$denda = $dnd[0][0] * 500;
