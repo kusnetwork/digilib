@@ -214,25 +214,25 @@
 		<input type="hidden" name="tum" id="tum">
 		<div>
 			<label><p class="title">Nama</p>
-			  <input name="nama" type="text" class="span12" value="">
+			  <input name="nama" type="text" class="span12" value="" required="required">
 			</label>
 			<label><p class="title">Username</p>
-			  <input name="username" type="text" class="span12" value="">
+			  <input name="username" type="text" class="span12" value="" required="required">
 			</label>
 			<label><p class="title">Password</p>
-			  <input name="password" type="password" class="span12" value="">
+			  <input name="password" type="password" class="span12" value="" required="required">
 			</label>
 			<label><p class="title">Email</p>
-			  <input name="email" type="text" class="span12" value="">
+			  <input name="email" type="text" class="span12" value="" required="required">
 			</label>
 			<label><p class="title">Tempat Lahir</p>
-			  <input name="tpl" type="text" class="span12" value="">
+			  <input name="tpl" type="text" class="span12" value="" required="required">
 			</label>
 			<label><p class="title">Tanggal Lahir</p>
-			  <input name="ttl" type="text" class="span12 date" value="">
+			  <input name="ttl" type="text" class="span12 date" value="" required="required">
 			</label>
 			<label><p class="title">Alamat</p>
-			  <input name="alamat" type="text" class="span12" value="">
+			  <input name="alamat" type="text" class="span12" value="" required="required">
 			</label>
 		</div>
 	  </div>
