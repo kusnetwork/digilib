@@ -6,11 +6,16 @@
 		$db=new MySQL();
 		$db->connect();
 		if(isset($tb)) {
+			$file = "img/" . $_FILES['image']['name'];
+			$tmp = $_FILES['image']['tmp_name'];
+
 			$db->execute("UPDATE tb_buku SET 
-				judul = '$judul', kodePenerbit = '$kodePenerbit', kodePengarang = '$kodePengarang', tahun = '$tahun', edisi = '$edisi',
-				issn_isbn = '$issn_isbn', seri = '$seri', abstraksi = '$abstraksi', kodeKategori = '$kodeKategori', tglUpdate = '$date',
-				lastUpdateBy = '$idUser'
-				WHERE kodeBuku = $kodeBuku");			
+			judul = '$judul', kodePenerbit = '$kodePenerbit', kodePengarang = '$kodePengarang', tahun = '$tahun', edisi = '$edisi',
+			issn_isbn = '$issn_isbn', seri = '$seri', abstraksi = '$abstraksi', kodeKategori = '$kodeKategori', tglUpdate = '$date', image = '$file',
+			lastUpdateBy = '$idUser'
+			WHERE kodeBuku = $kodeBuku");
+
+			move_uploaded_file($tmp, $file);
 			redirect("?page=daftar_buku","");
 		} if(isset($tk)) {
 			$db->execute("UPDATE tb_kategori SET 
@@ -53,9 +58,16 @@
 					nama = '$nama', username = '$username', email = '$email', tempatLahir = '$tpl', tanggalLahir = '$ttl', alamat = '$alamat'
 					WHERE kodeMhs = $kodeMhs");			
 			else
+
+				$file = "img-mhs/" . $_FILES['image']['name'];
+				$tmp = $_FILES['image']['tmp_name'];
+
 				$db->execute("UPDATE tb_mahasiswa SET 
-					nama = '$nama', username = '$username', password = '".md5($password)."', email = '$email', tempatLahir = '$tpl', tanggalLahir = '$ttl', alamat = '$alamat'
-					WHERE kodeMhs = $kodeMhs");			
+					nama = '$nama', username = '$username', password = '".md5($password)."', email = '$email', tempatLahir = '$tpl', tanggalLahir = '$ttl', alamat = '$alamat', image = '$image', jurusan = '$jurusan'
+					WHERE kodeMhs = $kodeMhs");	
+					
+				move_uploaded_file($tmp, $file);
+
 			redirect("?page=daftar_mahasiswa","");
 		}
 	}
@@ -67,9 +79,14 @@
 		$db=new MySQL();
 		$db->connect();
 		if(isset($tb)) {
+			$file = "img/" . $_FILES['image']['name'];
+			$tmp = $_FILES['image']['tmp_name'];
+
 			$db->execute("INSERT INTO tb_buku VALUES
 				('','$judul','$kodePenerbit','$kodePengarang','$tahun','$edisi','$issn_isbn','$seri','$abstraksi','$kodeKategori','$date','$date','','$kodePetugas')");
+			move_uploaded_file($tmp, $file);
 			redirect("?page=daftar_buku","");
+
 		} else if(isset($tk)) {
 			$db->execute("INSERT INTO tb_kategori VALUES ('','$namaKategori')");
 			redirect("?page=daftar_kategori","");
@@ -88,8 +105,14 @@
 				VALUES ('','$username','".md5($password)."','$nama','$email','$date','$date','tpl','$ttl','$alamat','')");
 			redirect("?page=daftar_dosen","");
 		} if(isset($tum)) {
+			$file = "img-mhs/" . $_FILES['image']['name'];
+			$tmp = $_FILES['image']['tmp_name'];
+
 			$db->execute("INSERT INTO tb_mahasiswa 
-				VALUES ('','$username','".md5($password)."','$nama','$email','$date','$date','tpl','$ttl','$alamat','','')");
+				VALUES ('','$username','".md5($password)."','$nama','$email','$date','$date','tpl','$ttl','$alamat','$image','$jurusan')");
+			redirect("?page=daftar_mahasiswa","");
+
+			move_uploaded_file($tmp, $file);
 			redirect("?page=daftar_mahasiswa","");
 		}
 	}
