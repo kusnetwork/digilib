@@ -6,11 +6,15 @@
 		$db=new MySQL();
 		$db->connect();
 		if(isset($tb)) {
+			$file = "img/" . $_FILES['image']['name'];
+			$tmp = $_FILES['image']['tmp_name'];
+
 			$db->execute("UPDATE tb_buku SET 
-				judul = '$judul', kodePenerbit = '$kodePenerbit', kodePengarang = '$kodePengarang', tahun = '$tahun', edisi = '$edisi',
-				issn_isbn = '$issn_isbn', seri = '$seri', abstraksi = '$abstraksi', kodeKategori = '$kodeKategori', tglUpdate = '$date',
-				lastUpdateBy = '$idUser'
-				WHERE kodeBuku = $kodeBuku");			
+			judul = '$judul', kodePenerbit = '$kodePenerbit', kodePengarang = '$kodePengarang', tahun = '$tahun', edisi = '$edisi',
+			issn_isbn = '$issn_isbn', seri = '$seri', abstraksi = '$abstraksi', kodeKategori = '$kodeKategori', tglUpdate = '$date', image = '$file',
+			lastUpdateBy = '$idUser'
+			WHERE kodeBuku = $kodeBuku");
+			move_uploaded_file($tmp, $file);
 			redirect("?page=daftar_buku","");
 		} if(isset($tk)) {
 			$db->execute("UPDATE tb_kategori SET 
