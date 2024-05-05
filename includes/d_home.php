@@ -24,7 +24,7 @@
 	<hr />
 	 <?php for($i=0; $i<count($data); $i++) { ?>
 		<div class="span3 center">
-			<p><img src="img/no_image.jpg" class="img-polaroid"></p>
+			<p><img src="<?=$data[$i][10]?>" class="img-polaroid" style="width:200px; height:200px;"></p>
 			<p class="title"><?=$data[$i][1]?></p>
 			<p class="title title-small">( <?=$data[$i][3]?> )</p>
 			<p>
