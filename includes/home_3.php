@@ -11,7 +11,7 @@
 			$cat=$db->get_dataset();
 			for($i=0; $i<count($cat); $i++) {
 		  ?>
-			<li><a href="#"><?=$cat[$i][1]?></a></li>
+			<li><a href="?cat=<?=$cat[$i][0]?>"><?=$cat[$i][1]?></a></li>
 		  <?php } ?>
 		</ul>
 	  </div><!--/.well -->

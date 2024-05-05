@@ -13,12 +13,12 @@
 				  <li class="active home"><a href="index.php"><i class="icon-home icon-white"></i></a></li>
 				  <li><a href="?page=pinjaman"><i class="icon-shopping-cart icon-white"></i> Pinjaman</a></li>
 				  <li><a href="?page=history"><i class="icon-calendar icon-white"></i> History Pinjaman</a></li>
-				  <li><a href="#about"><i class="icon-info-sign icon-white"></i> Bantuan</a></li>
+				  <li><a href="?page=bantuan"><i class="icon-info-sign icon-white"></i> Bantuan</a></li>
 				</ul>
 				<ul class="pull-right nav">
 					<li>
-						<form class="navbar-search">
-						  <input type="text" class="search-query" placeholder="Search">
+						<form class="navbar-search" method="post" action="index.php">
+						  <input type="text" class="search-query" placeholder="Search" name="search">
 						</form>
 					</li>
 					<li class="logout"><a href="logout.php"><i class="icon-remove icon-white"></i> Keluar</a></li>
