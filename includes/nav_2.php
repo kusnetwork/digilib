@@ -17,8 +17,8 @@
 				</ul>
 				<ul class="pull-right nav">
 					<li>
-						<form class="navbar-search">
-						  <input type="text" class="search-query" placeholder="Search">
+						<form class="navbar-search" method="post" action="index.php">
+						  <input type="text" class="search-query" placeholder="Search" name="search">
 						</form>
 					</li>
 					<li class="logout"><a href="logout.php"><i class="icon-remove icon-white"></i> Keluar</a></li>
