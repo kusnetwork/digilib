@@ -21,8 +21,8 @@
 	</div><!--/span-->
 	<div class="span9 well" id="main-content">
 	  <div class="row-fluid">
-		<div class="span12">
-		
+		<div class="span12"><img src="img/buku.jpg" id="gambar">
+				
 		  <?php 
 			if(!isset($page)) {
 		  ?>
