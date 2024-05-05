@@ -145,6 +145,11 @@
 				  <td>Tanggal Update:</td>
 				  <td><?=$data[$i][6]?></td>
 				</tr>
+				<tr>
+				  <td>Jurusan:</td>
+				  <td><?=$data[$i][10]?></td>
+				</tr>
+				
 			  </tbody>
 			</table>
 		</div>
@@ -191,6 +196,12 @@
 			<label><p class="title">Alamat</p>
 			  <input name="alamat" type="text" class="span12" value="<?=$data[$i][7]?>">
 			</label>
+			<label><p class="title">Jurusan</p>
+			  <input name="jurusan" type="text" class="span12" value="<?=$data[$i][11]?>" required="required">
+			</label>
+			<label><p class="title">Gambar</p>
+				<input class="btn btn-success" type="file" name="image">
+			</label>
 		</div>
 	  </div>
   </div>
@@ -214,25 +225,31 @@
 		<input type="hidden" name="tum" id="tum">
 		<div>
 			<label><p class="title">Nama</p>
-			  <input name="nama" type="text" class="span12" value="">
+			  <input name="nama" type="text" class="span12" value="" required="required">
 			</label>
 			<label><p class="title">Username</p>
-			  <input name="username" type="text" class="span12" value="">
+			  <input name="username" type="text" class="span12" value="" required="required">
 			</label>
 			<label><p class="title">Password</p>
-			  <input name="password" type="password" class="span12" value="">
+			  <input name="password" type="password" class="span12" value="" required="required">
 			</label>
 			<label><p class="title">Email</p>
-			  <input name="email" type="text" class="span12" value="">
+			  <input name="email" type="text" class="span12" value="" required="required">
 			</label>
 			<label><p class="title">Tempat Lahir</p>
-			  <input name="tpl" type="text" class="span12" value="">
+			  <input name="tpl" type="text" class="span12" value="" required="required">
 			</label>
 			<label><p class="title">Tanggal Lahir</p>
-			  <input name="ttl" type="text" class="span12 date" value="">
+			  <input name="ttl" type="text" class="span12 date" value="" required="required">
 			</label>
 			<label><p class="title">Alamat</p>
-			  <input name="alamat" type="text" class="span12" value="">
+			  <input name="alamat" type="text" class="span12" value="" required="required">
+			</label>
+			<label><p class="title">Jurusan</p>
+			  <input name="jurusan" type="text" class="span12" value="" required="required">
+			</label>
+			<label><p class="title">Gambar</p>
+				<input class="btn btn-success" type="file" name="image">
 			</label>
 		</div>
 	  </div>
