@@ -22,9 +22,9 @@
 		<div class="span12">
 		  <?php 
 			if(!isset($page))
-				include("includes/m_home.php"); 
+				include("includes/d_home.php"); 
 			else
-				include("includes/m_". $page .".php"); 
+				include("includes/d_". $page .".php"); 
 		  ?>
 		</div><!--/span-->
 	  </div><!--/row-->
