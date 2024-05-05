@@ -21,21 +21,60 @@
 
 <div class="row-fluid">
 	<h2 class="title title-large">Daftar Buku</h2>
-	<hr />
-	 <?php for($i=0; $i<count($data); $i++) { ?>
-		<div class="span3 center">
-			<p><img src="img/no_image.jpg" class="img-polaroid"></p>
-			<p class="title"><?=$data[$i][1]?></p>
-			<p class="title title-small">( <?=$data[$i][3]?> )</p>
-			<p>
-				<a href="#modalDetail<?=$i?>" role="button" class="btn btn- btn-inverse btn-small" data-toggle="modal">
-					<i class="icon-zoom-in icon-white"></i> Detail
-				</a>
-			</p>
+
+
+	<!-- DAFTAR DATA BUKU YANG DITAMPILKAN -->
+
+	<?php if(isset($_POST['search']) && !empty($data_search)):?>
+			<!-- Jika value dari $data search bukan NULL dan ada isinya, maka // -->
+		<hr />
+		
+		<div class="container-fluid">
+			<?php for($i = 0; $i < count($data_search); $i++) { ?>
+				<!-- Looping Pengambilan Data Buku -->
+				<div class="span3 center">
+					<p><img src="img/no_image.jpg" class="img-polaroid"></p>
+					<p class="title"><?= $data_search[$i][1] ?></p>
+					<p class="title title-small">( <?= $data_search[$i][3] ?> )</p>
+					<p>
+						<a href="#modalDetail<?= $i ?>" role="button" class="btn btn- btn-inverse btn-small" data-toggle="modal">
+							<i class="icon-zoom-in icon-white"></i> Detail
+						</a>
+					</p>
+				</div>
+			<?php } ?>
 		</div>
-	  <?php } ?>
-</div>
-<hr />
+		<hr />
+
+		<?php elseif(isset($_POST['search']) && empty($data_search)): ?>
+			<!-- Jika kolom search terisi, tapi data buku tidak ditemukan -->
+			<hr />
+			<p>No results found.</p>
+			<hr />
+
+			<?php elseif(empty($data_search)): ?>
+		<!-- Jika kolom search tidak terisi, maka.. -->
+		<hr />
+		
+		<?php for($i=0; $i<count($data); $i++) { ?>
+			<!-- Looping Pengambilan Data Buku -->
+			<div class="span3 center">
+				<p><img src="img/no_image.jpg" class="img-polaroid"></p>
+				<p class="title"><?=$data[$i][1]?></p>
+				<p class="title title-small">( <?=$data[$i][3]?> )</p>
+				<p>
+					<a href="#modalDetail<?=$i?>" role="button" class="btn btn- btn-inverse btn-small" data-toggle="modal">
+						<i class="icon-zoom-in icon-white"></i> Detail
+					</a>
+				</p>
+			</div>
+		<?php } ?>
+		</div>
+		<hr />
+
+	
+	<?php endif; ?>
+
 <?php	
 	//PAGINATION
 	$db=new MySQL();
