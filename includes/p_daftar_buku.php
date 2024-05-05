@@ -10,7 +10,7 @@
 	$db=new MySQL();
 	$db->connect();
 	$db->execute("SELECT b.kodeBuku, b.judul, p1.nama, p2.nama, b.tahun, b.edisi, b.issn_isbn, 
-		b.seri, b.abstraksi, k.namaKategori, b.tglInput, b.tglUpdate, pt.nama, p1.kodePenerbit, p2.kodePengarang
+		b.seri, b.abstraksi, k.namaKategori, b.tglInput, b.tglUpdate, b.image, pt.nama, p1.kodePenerbit, p2.kodePengarang
 		FROM tb_buku b, tb_penerbit p1, tb_pengarang p2, tb_kategori k, tb_petugas pt
 		WHERE b.kodePenerbit = p1.kodePenerbit
 		AND b.kodePengarang = p2.kodePengarang
@@ -112,7 +112,7 @@
   <div class="modal-body">
       <div class="row-fluid">
 		<div class="span4">
-			<p><img src="img/no_image.jpg" class="img-polaroid img"></p>
+			<p><img src="<?= $data[$i][12]; ?>" class="img-polaroid img"></p>
 		</div>
 		<div class="span7 title">
 			<table class="table table-condensed">
@@ -211,7 +211,7 @@
 
 <!-- EDIT -->
 <?php for($i = 0; $i < count($data); $i++) { ?>
-<form action="?page=process" method="post">
+<form action="?page=process" method="post" enctype="multipart/form-data">
 <div class="modal hide fade" id="modalEdit<?=$i?>" tabindex="-1" role="dialog" aria-labelledby="modalEdit<?=$i?>Label" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -292,6 +292,9 @@
 					} ?>
 				</select>
 			</label>
+			<label><p class="title">Gambar</p>
+				<input class="btn btn-success" type="file" name="image">
+			</label>
 		</div>
 	  </div>
   </div>
@@ -304,7 +307,7 @@
 <?php } ?>
 
 <!-- TAMBAH -->
-<form action="?page=process" method="post">
+<form action="?page=process" method="post" enctype="multipart/form-data">
 <div class="modal hide fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambahLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -316,7 +319,7 @@
 		<input type="hidden" name="tb" id="tb">
 		<div>
 			<label><p class="title">Judul Buku</p>
-			  <input name="judul" type="text" class="span12" value="">
+			  <input name="judul" type="text" class="span12" value="" required="required">
 			</label>
 			<label><p class="title">Penerbit</p>
 				<select name="kodePenerbit" class="span12">
@@ -371,6 +374,9 @@
 						<option value="<?=$pn[$j][0]?>"><?=$pn[$j][1]?></option>
 				  <?php } ?>
 				</select>
+			</label>
+			<label><p class="title">Gambar</p>
+				<input class="btn btn-success" type="file" name="image">
 			</label>
 		</div>
 	  </div>

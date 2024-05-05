@@ -16,7 +16,44 @@
 			case 2: $initial = "d"; $typeName = "Pembimbing";  break;
 			case 3: $initial = "m"; $typeName = "Mahasiswa"; break;
 		}
+		
 	}
+
+	// QUERY SEARCH
+	if (isset($_POST['search'])) {
+		// Jika terdapat kiriman POST "search", maka ..
+		$batas=10;	
+		if(empty($_GET["hal"])){
+		// Jika tidak ada GET[Halaman], maka ..
+		// PAGINATION: hal untuk halaman yang sedang berjalan, posisi untuk starting data pada halaman yang berjalan
+			$posisi=0;
+			$hal=1;
+		}else{
+			$hal=$_GET["hal"];
+			$posisi=($hal-1)*$batas;
+	}
+	
+
+		$db=new MySQL();
+		$db->connect();
+
+        $search_query = $_POST['search'];
+		$db->execute("SELECT b.kodeBuku, b.judul, p1.nama AS nama_penerbit, p2.nama AS nama_pengarang, 
+              b.tahun, b.edisi, b.issn_isbn, b.seri, b.abstraksi, k.namaKategori
+              FROM tb_buku b
+              JOIN tb_penerbit p1 ON b.kodePenerbit = p1.kodePenerbit
+              JOIN tb_pengarang p2 ON b.kodePengarang = p2.kodePengarang
+              JOIN tb_kategori k ON b.kodeKategori = k.kodeKategori
+              WHERE b.judul LIKE '%$search_query%'
+              LIMIT $posisi, $batas"); 
+			//   Mengambil data dari kolom-kolom tersebut, dimana baris judul buku mirip dengan value "search"
+
+		$data_search=$db->get_dataset();
+		} else {
+			$data_search = [];
+	}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -64,15 +101,18 @@
 		</div>
 		
 		<?php 
-			if(!isset($type))
+			if(!isset($type)) 
+			// Jika $type = Null, maka hanya menampilkan nav_0.php
 				include("includes/nav_0.php"); 
 			else
+			
 				include("includes/nav_". $type .".php"); 
 		?>
 		
 	<div class="container-fluid">
 			<?php 
 				if(!isset($type))
+				// Jika $type = Null, maka hanya menampilkan home_0.php
 					include("includes/home_0.php"); 
 				else
 					include("includes/home_". $type .".php"); 
@@ -85,6 +125,8 @@
 		-->
 		
     </div><!--/.fluid-container-->
+	
+	
   </body>
 
         
